@@ -248,7 +248,7 @@ GROUP BY u.user_id, u.fullname, u.email
 ORDER BY order_count DESC
 LIMIT 1;
 
--- câu 4: tìm người dùng không hoạt động trong hệ thống
+-- câu 4: tìm người dùng không like, đặt hàng, đánh giá
 SELECT u.*
 FROM users u
 LEFT JOIN orders o ON u.user_id = o.user_id
