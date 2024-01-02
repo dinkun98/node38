@@ -1,0 +1,266 @@
+CREATE TABLE users(
+	user_id INT PRIMARY KEY AUTO_INCREMENT,
+	fullname varchar(100),
+	email varchar(255),
+	pass_word varchar(255)
+)
+
+INSERT INTO users (fullname, email, pass_word) VALUES
+('John Doe', 'john.doe@example.com', 'password123'),
+('Jane Smith', 'jane.smith@example.com', 'securepassword'),
+('Bob Johnson', 'bob.johnson@example.com', 'myp@ssw0rd'),
+('Alice Brown', 'alice.brown@example.com', 'pass1234'),
+('Charlie Davis', 'charlie.davis@example.com', 'strongpwd'),
+('Eva White', 'eva.white@example.com', 'password987'),
+('David Lee', 'david.lee@example.com', 'secretword'),
+('Grace Taylor', 'grace.taylor@example.com', 'safepass'),
+('Frank Wilson', 'frank.wilson@example.com', 'letmein'),
+('Olivia Hall', 'olivia.hall@example.com', 'hiddenpass'),
+('Michael Turner', 'michael.turner@example.com', 'access123'),
+('Sophie Clark', 'sophie.clark@example.com', 'open123'),
+('Daniel Evans', 'daniel.evans@example.com', 'secure123'),
+('Emma Rogers', 'emma.rogers@example.com', 'testpass'),
+('Ryan Harris', 'ryan.harris@example.com', 'mypassword'),
+('Lily Wright', 'lily.wright@example.com', 'pass5678'),
+('Jack Moore', 'jack.moore@example.com', 'passwordtest'),
+('Mia Parker', 'mia.parker@example.com', 'newpass'),
+('William Hayes', 'william.hayes@example.com', 'myp@ssword'),
+('Ava Foster', 'ava.foster@example.com', 'p@ss123');
+
+#select data
+select * from users;
+
+# tạo table restaurant
+CREATE TABLE restaurant(
+	res_id INT PRIMARY KEY AUTO_INCREMENT,
+	res_name varchar(100),
+	image varchar(255),
+	decs varchar(255)
+)
+
+
+INSERT INTO restaurant (res_name, image, decs) VALUES
+('Restaurant A', 'image1.jpg', 'Description 1'),
+('Restaurant B', 'image2.jpg', 'Description 2'),
+('Restaurant C', 'image3.jpg', 'Description 3'),
+('Restaurant D', 'image4.jpg', 'Description 4'),
+('Restaurant E', 'image5.jpg', 'Description 5'),
+('Restaurant F', 'image6.jpg', 'Description 6'),
+('Restaurant G', 'image7.jpg', 'Description 7'),
+('Restaurant H', 'image8.jpg', 'Description 8'),
+('Restaurant I', 'image9.jpg', 'Description 9'),
+('Restaurant J', 'image10.jpg', 'Description 10'),
+('Restaurant K', 'image11.jpg', 'Description 11'),
+('Restaurant L', 'image12.jpg', 'Description 12'),
+('Restaurant M', 'image13.jpg', 'Description 13'),
+('Restaurant N', 'image14.jpg', 'Description 14'),
+('Restaurant O', 'image15.jpg', 'Description 15'),
+('Restaurant P', 'image16.jpg', 'Description 16'),
+('Restaurant Q', 'image17.jpg', 'Description 17'),
+('Restaurant R', 'image18.jpg', 'Description 18'),
+('Restaurant S', 'image19.jpg', 'Description 19'),
+('Restaurant T', 'image20.jpg', 'Description 20');
+
+
+
+
+select * from restaurant
+
+#tạo table trung gian like_res
+CREATE TABLE like_res(
+	user_id INT,
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
+	
+	res_id INT,
+	FOREIGN KEY(res_id) REFERENCES restaurant(res_id),
+	
+	date_like DATE
+)
+
+DROP TABLE users;
+DROP TABLE like_res;
+DROP TABLE restaurant;
+
+INSERT INTO like_res (user_id, res_id, date_like) VALUES
+(1, 1, '2023-01-01'),
+(1 ,1, '2023-01-02');
+
+INSERT INTO like_res (user_id, res_id, date_like) VALUES
+(1, 1, '2023-01-01'),
+(2, 2, '2023-01-02'),
+(3, 3, '2023-01-03'),
+(4, 4, '2023-01-04'),
+(5, 5, '2023-01-05'),
+(1, 6, '2023-01-06'),
+(2, 7, '2023-01-07'),
+(3, 8, '2023-01-08'),
+(4, 9, '2023-01-09'),
+(5, 10, '2023-01-10'),
+(1, 11, '2023-01-11'),
+(2, 12, '2023-01-12'),
+(3, 13, '2023-01-13'),
+(4, 14, '2023-01-14'),
+(5, 15, '2023-01-15'),
+(1, 16, '2023-01-16'),
+(2, 17, '2023-01-17'),
+(3, 18, '2023-01-18'),
+(4, 19, '2023-01-19'),
+(5, 20, '2023-01-20');
+
+select * from like_res
+
+# tạo table rate_res
+CREATE TABLE rate_res(
+	user_id INT,
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
+	
+	res_id INT,
+	FOREIGN KEY(res_id) REFERENCES restaurant(res_id),
+	
+	amount INT,
+	date_rate DATE
+	
+)
+
+
+INSERT INTO rate_res (user_id, res_id, amount, date_rate) VALUES
+(1, 1, 4, '2023-01-01'),
+(2, 2, 5, '2023-01-02'),
+(3, 3, 3, '2023-01-03'),
+(1, 4, 2, '2023-01-04'),
+(2, 5, 4, '2023-01-05'),
+(3, 6, 5, '2023-01-06'),
+(4, 7, 3, '2023-01-07'),
+(5, 8, 4, '2023-01-08'),
+(1, 9, 5, '2023-01-09'),
+(2, 10, 2, '2023-01-10'),
+(3, 11, 4, '2023-01-11'),
+(4, 12, 3, '2023-01-12'),
+(5, 13, 5, '2023-01-13'),
+(1, 14, 3, '2023-01-14'),
+(2, 15, 4, '2023-01-15'),
+(3, 16, 2, '2023-01-16'),
+(4, 17, 5, '2023-01-17'),
+(5, 18, 4, '2023-01-18'),
+(1, 19, 3, '2023-01-19'),
+(2, 20, 5, '2023-01-20');
+
+# tạo bảng food_type
+CREATE TABLE food_type(
+    type_id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(255)
+);
+
+INSERT INTO food_type (type_name) VALUES
+('Fruits'),
+('Vegetables'),
+('Meat'),
+('Dairy'),
+('Grains');
+
+#tạo table food
+CREATE TABLE food (
+    food_id INT PRIMARY KEY AUTO_INCREMENT,
+    food_name VARCHAR(255),
+    image VARCHAR(255),
+    price FLOAT,
+    description VARCHAR(255),  
+    FOREIGN KEY(type_id) REFERENCES food_type(type_id)
+);
+
+INSERT INTO food (food_name, image, price, description, type_id) VALUES
+('Apple', 'apple.jpg', 1.99, 'Fresh and juicy', 1), 
+('Carrot', 'carrot.jpg', 0.75, 'Organic and crunchy', 2), 
+('Chicken', 'chicken.jpg', 5.99, 'Grilled to perfection', 3), 
+('Milk', 'milk.jpg', 2.5, 'Rich and creamy', 4), 
+('Rice', 'rice.jpg', 3.49, 'High-quality long-grain rice', 5); 
+
+
+
+#tạo table order 
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    food_id INT,
+    amount INT,
+    code VARCHAR(255),
+    arr_sub_id VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (food_id) REFERENCES food(food_id)
+);
+-- Thêm dữ liệu vào bảng orders
+INSERT INTO orders (user_id, food_id, amount, code, arr_sub_id) VALUES
+(1, 1, 2, 'ORDER123', 'SUB123'), 
+(1, 2, 2, 'ORDER123', 'SUB123'), 
+(1, 3, 2, 'ORDER123', 'SUB123'), 
+(2, 2, 1, 'ORDER456', 'SUB456'), 
+(3, 3, 3, 'ORDER789', 'SUB789'); 
+
+--tạo bảng sub_food 
+CREATE TABLE sub_food (
+    sub_id INT PRIMARY KEY AUTO_INCREMENT,
+    sub_name VARCHAR(255),
+    sub_description VARCHAR(255),
+    sub_price FLOAT,
+    food_id INT,
+    FOREIGN KEY (food_id) REFERENCES food(food_id)
+);
+-- Thêm dữ liệu vào bảng sub_food
+INSERT INTO sub_food (sub_name, sub_description, sub_price, food_id) VALUES
+('Cheeseburger', 'Classic cheeseburger with fries', 5.99, 1), 
+('Pepperoni Pizza', 'Pepperoni and cheese on a thin crust', 9.99, 2), 
+('Caesar Salad', 'Romaine lettuce, croutons, and Caesar dressing', 4.99, 3); 
+
+CREATE TABLE rate_res(
+	user_id INT,
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
+	
+	res_id INT,
+	FOREIGN KEY(res_id) REFERENCES restaurant(res_id),
+	
+	amount INT,
+	date_rate DATE
+	
+)
+
+
+-- câu 1: tìm 5 người like nhiều nhất
+select count(u.user_id) as 'number of likes',
+u.fullname from like_res as lr
+inner join users as u on lr.user_id = u.user_id
+group by u.fullname
+order by COUNT(u.user_id) desc 
+limit 5
+
+-- câu 2: tìm 2 nhà hàng có lượt like nhiều nhất
+SELECT r.res_id, r.res_name, r.image, r.decs, COUNT(l.user_id) AS like_count
+FROM restaurant r
+LEFT JOIN like_res l ON r.res_id = l.res_id
+GROUP BY r.res_id, r.res_name, r.image, r.decs
+ORDER BY like_count DESC
+LIMIT 2;
+
+-- câu 3: tìm người đặt hàng nhiều nhất
+SELECT u.user_id, u.fullname, u.email, COUNT(o.order_id) AS order_count
+FROM users u
+LEFT JOIN orders o ON u.user_id = o.user_id
+GROUP BY u.user_id, u.fullname, u.email
+ORDER BY order_count DESC
+LIMIT 1;
+
+-- câu 4: tìm người dùng không hoạt động trong hệ thống
+SELECT u.*
+FROM users u
+LEFT JOIN orders o ON u.user_id = o.user_id
+LEFT JOIN like_res lr ON u.user_id = lr.user_id
+LEFT JOIN rate_res rr ON u.user_id = rr.user_id
+WHERE o.user_id IS NULL
+  AND lr.user_id IS NULL
+  AND rr.user_id IS NULL;
+  
+
+-- COUNT, MAX, MIN, AVG,.... GROUP BY đi kèm
+
+# left join
+select * from users as u
+left join users as u on lr.user_id = u.user_id
